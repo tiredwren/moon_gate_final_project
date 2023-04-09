@@ -2,10 +2,6 @@ package com.example.moongate;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,7 +24,7 @@ import jxl.Workbook;
 import jxl.WorkbookSettings;
 import jxl.read.biff.BiffException;
 
-public class SearchFunctionActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     //    private ArrayAdapter<String> tempArrayAdapter;
     private final ArrayList<String> temp = new ArrayList<>();
@@ -39,8 +35,6 @@ public class SearchFunctionActivity extends AppCompatActivity {
     AsyncHttpClient client;
     Workbook workbook;
     List<String> storeName, plantName, plantPrice;
-
-    CheckBox like;
 
     // inside of each of these, we pull information from each website about which plants they have.
 //    String [] homeDepotPlantsList = {
@@ -55,29 +49,17 @@ public class SearchFunctionActivity extends AppCompatActivity {
 //            "Peach", "Rose", "Pear", "Apple"
 //    };
 //
-    String[] liked = {
-    };
+//    String [] namesOfStores = {
+//            "Home Depot", "Lowes", "Amazon"
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_function);
-        View v = LayoutInflater.from(this).inflate(R.layout.list_item, null);
-
-        CheckBox like = v.findViewById(R.id.favHeart);
-        like.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (like.isChecked()){
-                    fileList();
-                }
-            }
-        });
+        setContentView(R.layout.activity_main);
 
         // connecting activity to xml components
         ListView listSearch = findViewById(R.id.listSearch);
-        EditText editSearch = findViewById(R.id.editSearch);
-
 
         // code for excel spreadsheet information
         String url = "https://github.com/brindamoudgalya/MoonGate/blob/master/MoonGate.xls?raw=true";
@@ -92,12 +74,12 @@ public class SearchFunctionActivity extends AppCompatActivity {
         client.get(url, new FileAsyncHttpResponseHandler(this) {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, File file) {
-                Toast.makeText(SearchFunctionActivity.this, "Download Failed.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Download Failed.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, File file) {
-                Toast.makeText(SearchFunctionActivity.this, "Download Successful.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Download Successful.", Toast.LENGTH_SHORT).show();
                 WorkbookSettings ws = new WorkbookSettings();
                 ws.setGCDisabled(true);
                 if (file != null) {
@@ -121,11 +103,56 @@ public class SearchFunctionActivity extends AppCompatActivity {
             }
         });
 
+//        // adding each plant into temp:
+//        for (String plant : homeDepotPlantsList) {
+//            temp.add("Home Depot: " + plant);
+//        }
+//        for (String plant : lowesPlantsList) {
+//            temp.add("Lowes: " + plant);
+//        }
+//        for (String plant : amazonPlantsList) {
+//            temp.add("Amazon: " + plant);
+//        }
+//
+//        // setting array adapter, which sets the information displayed in the searchview
+//        tempArrayAdapter = new ArrayAdapter<>
+//                (this, R.layout.list_item, R.id.textViewListItem, temp);
+//        listSearch.setAdapter(tempArrayAdapter);
+//
+//        editSearch.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+//
+//            // as user types, plants are deleted if they don't contain correct letters
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                SearchFunctionActivity.this.tempArrayAdapter.getFilter().filter(charSequence);
+//            }
+//            @Override
+//            public void afterTextChanged(Editable editable) {}
+//        });
     }
-
     private void showData() {
         adapter = new Adapter(this, storeName, plantName, plantPrice);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
+
+
+//    public String webScraper (String url) {
+//        ArrayList<String> arrayList = new ArrayList<>();
+//        try {
+//            Document doc = Jsoup.connect("https://www.lowes.com/search?searchTerm=plants")
+//                    .userAgent("Mozilla/17.0")
+//                    .get();
+//            Elements temporary = doc.select("div.brand-description");
+//            for (Element plantList : temporary) {
+//                arrayList.add(plantList.getElementsByTag
+//                        ("span.description-spn").first().text());
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return arrayList.toString();
+//    }
 }

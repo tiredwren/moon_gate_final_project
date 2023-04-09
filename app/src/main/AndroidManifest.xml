@@ -12,6 +12,9 @@
         android:theme="@style/Theme.MoonGate"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".SearchFunctionActivity"
             android:exported="false" />
         <activity
