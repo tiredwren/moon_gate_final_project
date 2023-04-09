@@ -7,4 +7,5 @@
     <color name="yellow">#EFDD8D</color>
     <color name="coral">#FC814A</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="black">#000</color>
 </resources>

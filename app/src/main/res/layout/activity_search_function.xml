@@ -10,20 +10,24 @@
 
     <EditText
         android:id="@+id/editSearch"
-        android:hint="Search Here"
-        android:layout_marginTop="20dp"
-        android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Search Here"
+        android:padding="15dp"
+        app:fontFamily="@font/poppins_light"
         tools:ignore="HardcodedText" />
+
     <ListView
         android:id="@+id/listSearch"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:fontFamily="@font/poppins_light" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:fontFamily="@font/poppins_light" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
