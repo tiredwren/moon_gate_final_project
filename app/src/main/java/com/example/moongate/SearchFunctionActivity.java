@@ -36,6 +36,7 @@ public class SearchFunctionActivity extends AppCompatActivity {
     private ArrayAdapter<String> arrayAdapter;
 
     // variables for pulling information from excel spreadsheets
+    // reference: https://www.youtube.com/watch?v=kxdVo4RH3nE
     RecyclerView recyclerView;
     Adapter adapter;
     AsyncHttpClient client;
