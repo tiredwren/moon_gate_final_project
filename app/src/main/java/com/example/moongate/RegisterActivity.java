@@ -23,7 +23,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button logIn;
     EditText inputEmail, inputPassword, confirmPassword;
     Button signUp;
-    String emailPattern = "[a-zA-Z0._-]+@[a-z]+\\.+[a-z]+";
+    String emailPattern = "[a-zA-Z\\d._-]+@[a-z]+\\.+[a-z]+";
     ProgressDialog progressDialog;
 
     FirebaseAuth mAuth;

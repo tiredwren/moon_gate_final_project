@@ -18,6 +18,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+
+// reference: https://www.youtube.com/watch?v=gaykE36N7PY
+
 public class LoginActivity extends AppCompatActivity {
 
     Button newAccount;
