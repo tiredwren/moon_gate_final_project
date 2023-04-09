@@ -1,0 +1,9 @@
+# moon_gate_final_project
+
+This project was inpired by our mother, who loves anything to do with gardening. She prefers buying her plants online because they cost far less than in in-person stores, and she can compare prices from multiple stores at a time. However, to do that, she has to keep multiple tabs open, and keep searching through each website singularly. That can get really confusing, as it's hard to keep each price in mind while searching. That's what sparked the idea for MoonGate - have all the stores in one place, to make it so much easier to compare the prices.
+
+Our first step was to create a wireframe. We brainstormed ideas for functions of the app, most of which made it into the final design. We also got our color scheme figured out, to make the UI as cohesive as possible. Then began the coding. Our first idea was to use webscraping to gather the data for the app, but after a day of struggling with that idea, we scrapped it. Instead, we switched our focus to adding data to a spreadsheet, then importing the spreadsheet into the project. That took a while to finish as well, but in the end, we got them to connect! While one of us was working on retrieving the data, the other implemented the rest of the features - login & signup, the like button, and design. When one of us felt stuck, we swiched which part we were focusing on, so the project could keep moving forward.
+
+Even though we're siblings (especially since we're siblings), we get along pretty well. So it wasn't hard to work together; it was actually quite fun! We would definitely work together to further develop this app and perhaps another one in the future; if not for a competition, just simply for the fun of it.
+
+This repository is the final, pushed by Sneha. The intermediate commits, with evidence of our individual versions (pushed by Brinda) is in the other repository.
