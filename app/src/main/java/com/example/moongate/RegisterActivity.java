@@ -23,7 +23,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button logIn;
     EditText inputEmail, inputPassword, confirmPassword;
     Button signUp;
-    String emailPattern = "[a-zA-Z0-0._-]+@[a-z]+\\.+[a-z]+";
+    String emailPattern = "[a-zA-Z0._-]+@[a-z]+\\.+[a-z]+";
     ProgressDialog progressDialog;
 
     FirebaseAuth mAuth;
@@ -69,11 +69,11 @@ public class RegisterActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         if (!email.matches(emailPattern)) {
-            inputEmail.setError("incorrect email");
+            inputEmail.setError("try a different email email");
         } else if (password.isEmpty() || password.length() < 6) {
             inputPassword.setError("make sure your password has more than 6 characters.");
 
-        } else if (!password.equals(confirmPassword)) {
+        } else if (!password.equals(confirm)) {
             confirmPassword.setError("your passwords don't match");
         } else {
             progressDialog.setMessage("registering...");
