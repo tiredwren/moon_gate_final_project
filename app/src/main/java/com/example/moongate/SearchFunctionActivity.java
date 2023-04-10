@@ -3,9 +3,11 @@ package com.example.moongate;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +40,7 @@ public class SearchFunctionActivity extends AppCompatActivity {
     // variables for pulling information from excel spreadsheets
     // reference: https://www.youtube.com/watch?v=kxdVo4RH3nE
     RecyclerView recyclerView;
+    ProgressBar progressBar;
     Adapter adapter;
     AsyncHttpClient client;
     Workbook workbook;
@@ -52,6 +55,7 @@ public class SearchFunctionActivity extends AppCompatActivity {
         // connecting activity to xml components
         listSearch = findViewById(R.id.listSearch);
         editSearch = findViewById(R.id.editSearch);
+        progressBar = findViewById(R.id.progressBar);
 
         addData("");
 
@@ -82,7 +86,7 @@ public class SearchFunctionActivity extends AppCompatActivity {
     }
     private void addData(CharSequence charSequence) {
         // code for excel spreadsheet information
-        String url = "https://github.com/brindamoudgalya/MoonGate/blob/master/MoonGateFinal.xls?raw=true";
+        String url = "https://github.com/brindamoudgalya/MoonGate/blob/master/MoonGateFinalSheet.xls?raw=true";
         recyclerView = findViewById(R.id.recyclerView);
 
         storeName = new ArrayList<>();
@@ -91,14 +95,17 @@ public class SearchFunctionActivity extends AppCompatActivity {
         plantURL = new ArrayList<>();
 
         client = new AsyncHttpClient();
+        progressBar.setVisibility(View.VISIBLE);
         client.get(url, new FileAsyncHttpResponseHandler(this) {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, File file) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(SearchFunctionActivity.this, "Download Failed.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, File file) {
+                progressBar.setVisibility(View.GONE);
                 WorkbookSettings ws = new WorkbookSettings();
                 ws.setGCDisabled(true);
                 if (file != null) {
